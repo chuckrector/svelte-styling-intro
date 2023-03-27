@@ -15,7 +15,9 @@ The first option invites accidental regressions per usual. The second option mea
 
 This styling intro demonstrates how to turn IMVU styles into Svelte styles incrementally.
 
-# An overview of the files
+# Overview
+
+Use Node.js 16.14.2. Clone this repository and run `npm install`.
 
 * The `code/` directory contains all of the source code.
 * The `build/` directory contains all of the build output.
