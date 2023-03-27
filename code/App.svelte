@@ -1,5 +1,5 @@
 <script>
-    // NOTE(chuck): Example 2: The way Svelte styles things (initially wrecked)
+    // NOTE(chuck): Example 3: The way Svelte styles things (repaired)
     import ProfileIcon from './ProfileIcon.svelte';
 </script>
 
@@ -8,7 +8,9 @@
         <li class="logo"><img src="imvu-logo.svg" alt="IMVU logo"></li>
         <li class="menu">MENU</li>
         <li class="account">
-            <ProfileIcon imageUrl="profile-image-1.webp" />
+            <div class="profile-icon-wrapper">
+                <ProfileIcon imageUrl="profile-image-1.webp" />
+            </div>
         </li>
     </ul>
 </nav>
@@ -18,7 +20,9 @@
         <ul class="conversation-list">
             <li class="conversation-list-item">
                 <header class="conversation-list-item-header">
-                    <ProfileIcon imageUrl="profile-image-2.webp" />
+                    <div class="profile-icon-wrapper">
+                        <ProfileIcon imageUrl="profile-image-2.webp" size=50 />
+                    </div>
                     <span class="display-name font-medium">Rando</span>
                     <time>Tuesday</time>
                 </header>
@@ -29,7 +33,9 @@
 
             <li class="conversation-list-item unread">
                 <header class="conversation-list-item-header">
-                    <ProfileIcon imageUrl="profile-image-3.webp" />
+                    <div class="profile-icon-wrapper">
+                        <ProfileIcon imageUrl="profile-image-3.webp" size=50 />
+                    </div>
                     <span class="display-name font-medium">Rando</span>
                     <time>Tuesday</time>
                 </header>
@@ -40,7 +46,9 @@
 
             <li class="conversation-list-item selected">
                 <header class="conversation-list-item-header">
-                    <ProfileIcon imageUrl="profile-image-4.webp" />
+                    <div class="profile-icon-wrapper">
+                        <ProfileIcon size=50 imageUrl="profile-image-4.webp" />
+                    </div>
                     <span class="display-name font-medium">Rando</span>
                     <time>Tuesday</time>
                 </header>
@@ -73,7 +81,9 @@
             </li>
             <li class="message-list-item last-in-series">
                 <header class="message-list-item-header">
-                    <ProfileIcon imageUrl="profile-image-4.webp" />
+                    <div class="profile-icon-wrapper">
+                        <ProfileIcon imageUrl="profile-image-4.webp" />
+                    </div>
                 </header>
                 <p class="message-list-item-body">
                     <span class="message-text">No action is required.</span>
@@ -120,7 +130,7 @@
         justify-content: end;
         align-items: center;
     }
-    nav .account .profile-icon {
+    nav .account .profile-icon-wrapper {
         margin-right: 15px;
     }
 
@@ -131,7 +141,7 @@
         min-height: calc(100% - 50px);
     }
     .left-column {
-        padding: 0 10px 0 0;
+        margin: 0 10px 0 0;
     }
     .right-column {
         display: grid;
@@ -146,26 +156,24 @@
     }
     .conversation-list-item {
         position: relative;
-        min-height: 71px;
+        min-height: 70px;
         padding: 10px 10px 10px 0;
         border-bottom: 1px solid rgba(0,0,0,.1);
     }
     .conversation-list-item-header {
         display: flex;
         justify-content: space-between;
-        width: calc(100% - 70px);
         margin: 0 0 0 70px;
     }
     .conversation-list-item-header time {
         color: #a8a8a8;
     }
-    .conversation-list .profile-icon {
+    .conversation-list .profile-icon-wrapper {
         position: absolute;
         top: 10px;
         left: 13px;
         width: 50px;
         height: 50px;
-
     }
     .conversation-list-item-body {
         margin: 0 0 0 70px;
@@ -204,7 +212,7 @@
         text-align: center;
         padding: 10px 0 30px;
     }
-    .message-list-item .profile-icon {
+    .message-list-item .profile-icon-wrapper {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -241,4 +249,3 @@
         color: #a8a8a8;
     }
 </style>
-

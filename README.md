@@ -56,3 +56,20 @@ If you read `ProfileIcon.svelte` closely, you'll notice that `profile-icon` was 
 Start the dev server and remove the `sv-` prefix and notice how all of the styling is restored. Why add this prefix if it breaks our styling? It's because it will help us adapt to the Svelte way of styling components, which is naturally resistant toward accidental regressions. Preventing the IMVU website styling from bleeding through into the Svelte components is an important first step. Adding prefixes is an easy way to achieve this.
 
 The next example will demonstrate how to fix the styling in a Svelte-friendly way.
+
+# Example 3
+
+In this example, the profile icon styles have all been repaired. The strategy is simple: Add a wrapper element around every `<ProfileIcon />` and style the wrapper instead.
+
+Note that Svelte components do not receive and automatically apply HTML element attributes such as:
+
+```svelte
+<ProfileIcon class="large" />
+```
+
+The reason why is because Svelte components can contain arbitrary HTML with multiple elements at the top level. They are not like IMVU components which always have a single root element. With multiple elements at the top level, which would receive `class="large"`? One of them? All of them? It is ambiguous and so Svelte does not behave this way.
+
+Any attributes you specify on a Svelte component are considered props. If you pass in a prop that a Svelte component does not `export`, it will be ignored. Further, since `class` is a keyword in JavaScript, you cannot `export` a prop of that name. Start the dev server and try to do so in `ProfileIcon.svelte`.
+
+You may be tempted to pass in a prop named `classes` and then apply those classes to one or more elements. This does work and those classes will still be scoped by Svelte. But consider that CSS classes are generally used as a styling implementation detail. If you instead treat props as higher-level flags or tags, then they can be leveraged for any purpose. For example, `<ProfileIcon large={true} />` or `<ProfileIcon format="large" />`. A component can make any number of decisions internally about what elements to include or how to style them based on its props.
+
