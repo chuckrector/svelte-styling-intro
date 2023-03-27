@@ -1,5 +1,6 @@
 <script>
-    // NOTE(chuck): Example 1: The way IMVU styles things
+    // NOTE(chuck): Example 2: The way Svelte styles things (initially wrecked)
+    import ProfileIcon from './ProfileIcon.svelte';
 </script>
 
 <nav>
@@ -7,7 +8,7 @@
         <li class="logo"><img src="imvu-logo.svg" alt="IMVU logo"></li>
         <li class="menu">MENU</li>
         <li class="account">
-            <img src="profile-image-1.webp" class="profile-icon" alt="Rando">
+            <ProfileIcon imageUrl="profile-image-1.webp" />
         </li>
     </ul>
 </nav>
@@ -17,7 +18,7 @@
         <ul class="conversation-list">
             <li class="conversation-list-item">
                 <header class="conversation-list-item-header">
-                    <img src="profile-image-2.webp" class="profile-icon" alt="Rando">
+                    <ProfileIcon imageUrl="profile-image-2.webp" />
                     <span class="display-name font-medium">Rando</span>
                     <time>Tuesday</time>
                 </header>
@@ -28,7 +29,7 @@
 
             <li class="conversation-list-item unread">
                 <header class="conversation-list-item-header">
-                    <img src="profile-image-3.webp" class="profile-icon" alt="Rando">
+                    <ProfileIcon imageUrl="profile-image-3.webp" />
                     <span class="display-name font-medium">Rando</span>
                     <time>Tuesday</time>
                 </header>
@@ -39,7 +40,7 @@
 
             <li class="conversation-list-item selected">
                 <header class="conversation-list-item-header">
-                    <img src="profile-image-4.webp" class="profile-icon" alt="Rando">
+                    <ProfileIcon imageUrl="profile-image-4.webp" />
                     <span class="display-name font-medium">Rando</span>
                     <time>Tuesday</time>
                 </header>
@@ -72,7 +73,7 @@
             </li>
             <li class="message-list-item last-in-series">
                 <header class="message-list-item-header">
-                    <img src="profile-image-4.webp" class="profile-icon" alt="Rando">
+                    <ProfileIcon imageUrl="profile-image-4.webp" />
                 </header>
                 <p class="message-list-item-body">
                     <span class="message-text">No action is required.</span>
@@ -88,15 +89,6 @@
 </main>
 
 <style>
-    .profile-icon {
-        width: 30px;
-        height: 30px;
-        background-color: silver;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: 50% 0;
-    }
-
     nav {
         letter-spacing: 1px;
         background-color: #404040;
@@ -249,3 +241,4 @@
         color: #a8a8a8;
     }
 </style>
+

@@ -38,3 +38,21 @@ Examine how they are styled and note that `.profile-icon` has its own styles. Al
 * shifting its layout via absolute positioning
 
 In this example, all of these overrides have been placed in a single file and are relatively easy to debug. In the real IMVU codebase, the overrides are scattered across the file system. If you are styling a new component or fixing a styling regression on an existing component, you may or may not know where to look when its styles seem to be getting undesirably influenced by outside sources. If you are new to IMVU, you may struggle to find those sources. Even veterans may struggle!
+
+Start the dev server and examine the overall layout.
+
+# Example 2
+
+In this example, the profile icon has been converted into a Svelte component as `ProfileIcon.svelte`. Start the dev server and notice how the profile icon styles have been disrupted in every location:
+
+* The global nav profile icon is now flush against the right edge of the page.
+* The conversation list profile icons are now crammed into the right-hand text.
+* The message list profile icon is now crammed inbetween the chat bubbles.
+
+These are all real styling regressions that you are likely to encounter when converting IMVU's components to Svelte components.
+
+If you read `ProfileIcon.svelte` closely, you'll notice that `profile-icon` was renamed to `sv-profile-icon`. There is an important reason for this: Incrementally adopting Svelte means that all of our existing styles will bleed into the new Svelte components, negating the benefits of Svelte's scoped styling. A "pure Svelte" application does not have this problem but we do.
+
+Start the dev server and remove the `sv-` prefix and notice how all of the styling is restored. Why add this prefix if it breaks our styling? It's because it will help us adapt to the Svelte way of styling components, which is naturally resistant toward accidental regressions. Preventing the IMVU website styling from bleeding through into the Svelte components is an important first step. Adding prefixes is an easy way to achieve this.
+
+The next example will demonstrate how to fix the styling in a Svelte-friendly way.
