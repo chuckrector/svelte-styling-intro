@@ -1,5 +1,17 @@
 ![Screenshot of a simple IMVU mockup that includes the global nav, conversation list, message list, and a few different uses of profile icons.](splash.png)
 
+# Overview
+
+Use Node.js 16.14.2. Clone this repository and run `npm install`.
+
+Each example is tagged. Use `git checkout v1`, `v2`, `v3`, or `v4` to switch between them. Use `git checkout main` to switch back to master.
+
+* The `code/` directory contains all of the source code.
+* The `build/` directory contains all of the build output.
+* The `public/` directory is where files are served from, similar to `localhost.imvu.com`. Some files are copied into here from both the `code/` and `build/` directories.
+* `s/build` will build the project, part of which includes "deploying" into `public/`.
+* `s/dev` will build the project and start a dev server at http://localhost:8000 that will auto-rebuild and refresh the page as you save changes to files. It implements primitive "hot modules reloading".
+
 # Svelte styling intro
 
 IMVU attempts to isolate component styling informally by namespacing. For example, `ProfileIcon.scss` will put all of its styles under a `.profile-icon` rule. In practice, any style in any component may override another because CSS combines all styles globally by design. This total freedom complicates the implementation and maintenance of the application when the styles for any given component of interest are scattered across many files, and especially when they exist in unexpected locations.
@@ -14,16 +26,6 @@ If nobody can style a Svelte component without its permission, how is permission
 The first option invites accidental regressions per usual. The second option means that if a component is intended to be able to display itself in various formats, then it should know about all of them and be solely responsible for enforcing them. Svelte components can use "props" to accept input, like styling suggestions, from outside sources. With all the styling for a component occurring in only one place that has a well-defined input, debugging is simplified.
 
 This styling intro demonstrates how to turn IMVU styles into Svelte styles incrementally.
-
-# Overview
-
-Use Node.js 16.14.2. Clone this repository and run `npm install`.
-
-* The `code/` directory contains all of the source code.
-* The `build/` directory contains all of the build output.
-* The `public/` directory is where files are served from, similar to `localhost.imvu.com`. Some files are copied into here from both the `code/` and `build/` directories.
-* `s/build` will build the project, part of which includes "deploying" into `public/`.
-* `s/dev` will build the project and start a dev server at http://localhost:8000 that will auto-rebuild and refresh the page as you save changes to files. It implements primitive "hot modules reloading".
 
 # Example 1
 
