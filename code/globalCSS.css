@@ -1,0 +1,78 @@
+:root {
+    --color-black:       rgb(0 0 0 / 1.0);
+    --color-transparent: rgb(0 0 0 / 0.0);
+
+    --color-andesite: rgb(43 43 43);
+    --color-charcoal: rgb(64 64 64);
+    --color-charcoal-backing: rgb(80 80 80);
+    --color-pumice-extra-dark: rgb(151 151 151);
+    --color-pumice-dark: rgb(157 157 157);
+    --color-pumice: rgb(168 168 168);
+    --color-granite: rgb(212 212 212);
+    --color-light-grey: rgb(229 229 229);
+    --color-light-grey2: rgb(243 243 243);
+    --color-smoke: rgb(234 234 234);
+    --color-ash: rgb(242 242 242);
+    --color-off-ash: rgb(250 250 250);
+    --color-off-white: rgb(253 253 253);
+    --color-white: rgb(255 255 255);
+    --color-white-50: rgb(255 255 255 / .5);
+    
+    --color-main-bg: var(--color-ash);
+    --gradient-main-bg: linear-gradient(-45deg,
+                        var(--color-transparent) 0%,
+                        var(--color-transparent) 50%,
+                        var(--color-white-50) 50%);
+    
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font: 12px/1.4 "Gotham SSm 4r";
+}
+
+.font-medium { font-family: "Gotham SSm 5r"; }
+.fixed  { position: fixed; }
+.z-neg1 { z-index: -1; }
+
+.loading-facade {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+.two-tone-split {
+    background-color: var(--color-main-bg);
+    overflow: hidden;
+}
+.two-tone-split::before {
+    --w: 9999px;
+    --h: calc(var(--w) / 1.57);
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: calc(var(--w) / -2);
+    margin-top: calc(var(--h) / -2);
+    background-image: var(--gradient-main-bg);
+    width: var(--w);
+    height: var(--h);
+}

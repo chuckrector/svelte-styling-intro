@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svelte scoped styling study</title>
+    <link rel="stylesheet" href="HCo_fonts.css" media="all">
+    <link rel="stylesheet" href="globalCSS.css">
+</head>
+<body>
+    <div class="loading-facade two-tone-split"></div>
+    <div id="app"></div>
+    <script type="module">
+        let app;
+        async function createApp() {
+            let target = document.querySelector('#app');
+            if (app) {
+                app.$destroy(); // NOTE(chuck): Ensure all Svelte components teardown properly.
+                // NOTE(chuck): Cleanup injected Svelte styles that would otherwise accumulate.
+                for (let el of document.querySelectorAll('head style')) {
+                    if (el.id.startsWith('svelte-')) {
+                        el.remove();
+                    }
+                }
+            }
+            // NOTE(chuck): This is "hot module reloading".
+            let moduleUrl = './bundle.js?' + (performance.timeOrigin + performance.now());
+            let App = await import(moduleUrl);
+            app = new App.default({
+                target,
+            });
+        }
+
+        let devServerReconnectTimer;
+        let devServerProblemWasEncountered;
+        let log = (...args) => console.log('[dev server]', new Date().toISOString(), ...args);
+        let warn = (...args) => console.warn('[dev server]', new Date().toISOString(), ...args);
+        let error = (...args) => console.error('[dev server]', new Date().toISOString(), ...args);
+        function devServerConnect() {
+            let ws = new WebSocket("ws://localhost:8000");
+            ws.onopen = async (event) => {
+                clearTimeout(devServerReconnectTimer);
+                log('Connected to dev server.');
+                // NOTE(chuck): Our confidence in correctness is low at this point, so fully reload.
+                if (devServerProblemWasEncountered) {
+                    log('Full page auto-reload due to dev server reconnection...');
+                    location.reload();
+                }
+            };
+            ws.onclose = (event) => {
+                log('onclose', event);
+                devServerProblemWasEncountered = true;
+                clearTimeout(devServerReconnectTimer);
+                devServerReconnectTimer = setTimeout(devServerConnect);
+            };
+            ws.onerror = (event) => {
+                error('onerror', event);
+                devServerProblemWasEncountered = true;
+                clearTimeout(devServerReconnectTimer);
+                devServerReconnectTimer = setTimeout(devServerConnect);
+            };
+            ws.onmessage = (event) => {
+                if (event.data == 'reload') {
+                    log('HMR triggered...');
+                    createApp();
+                } else {
+                    warn('An unexpected message was received.', event.data, event);
+                }
+            };
+        }
+
+        devServerConnect();
+        createApp();
+    </script>
+</body>
+</html>

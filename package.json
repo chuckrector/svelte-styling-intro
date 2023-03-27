@@ -1,0 +1,10 @@
+{
+  "name": "svelte-styling-intro",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "esbuild": "^0.17.14",
+    "svelte": "^3.57.0"
+  }
+}
