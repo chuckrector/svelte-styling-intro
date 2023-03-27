@@ -23,6 +23,12 @@ This styling intro demonstrates how to turn IMVU styles into Svelte styles incre
 
 # Example 1
 
+To follow along, run:
+
+```shell
+git checkout v1
+```
+
 `App.svelte` contains a small mockup of the IMVU website with all of the markup and styles combined, except for `globalCSS.css` which contains similar boilerplate styling. Pretend that the content of `App.svelte` is the result of building our existing website. It represents the bundled markup and styling for the global nav, conversation list, message list, message list item, chat bubble, and profile icon components.
 
 Profile icons appear in three places:
@@ -43,6 +49,12 @@ Start the dev server and examine the overall layout.
 
 # Example 2
 
+Run:
+
+```shell
+git checkout v2
+```
+
 In this example, the profile icon has been converted into a Svelte component as `ProfileIcon.svelte`. Start the dev server and notice how the profile icon styles have been disrupted in every location:
 
 * The global nav profile icon is now flush against the right edge of the page.
@@ -58,6 +70,12 @@ Start the dev server and remove the `sv-` prefix and notice how all of the styli
 The next example will demonstrate how to fix the styling in a Svelte-friendly way.
 
 # Example 3
+
+Run:
+
+```shell
+git checkout v3
+```
 
 In this example, the profile icon styles have all been repaired. The strategy is simple: Add a wrapper element around every `<ProfileIcon />` and style the wrapper instead.
 
