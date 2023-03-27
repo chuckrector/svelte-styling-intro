@@ -1,3 +1,5 @@
+![Screenshot of a simple IMVU mockup that includes the global nav, conversation list, message list, and a few different uses of profile icons.](splash.png)
+
 # Svelte styling intro
 
 IMVU attempts to isolate component styling informally by namespacing. For example, `ProfileIcon.scss` will put all of its styles under a `.profile-icon` rule. In practice, any style in any component may override another because CSS combines all styles globally by design. This total freedom complicates the implementation and maintenance of the application when the styles for any given component of interest are scattered across many files, and especially when they exist in unexpected locations.
