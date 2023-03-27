@@ -91,3 +91,14 @@ Any attributes you specify on a Svelte component are considered props. If you pa
 
 You may be tempted to pass in a prop named `classes` and then apply those classes to one or more elements. This does work and those classes will still be scoped by Svelte. But consider that CSS classes are generally used as a styling implementation detail. If you instead treat props as higher-level flags or tags, then they can be leveraged for any purpose. For example, `<ProfileIcon large={true} />` or `<ProfileIcon format="large" />`. A component can make any number of decisions internally about what elements to include or how to style them based on its props.
 
+# Example 4
+
+Run:
+
+```shell
+git checkout v4
+```
+
+In this example, the profile icon styles have all been repaired in a more holistic fashion. Meaning, instead of putting everything inside a wrapper, the structure and semaantics of the document are changed in addition to changing the styles.
+
+The changes in this example are not intended to point out the "correct" way to repair the styles. They aim only show an alternative to wrappers. Modifications such as these may be much more time-consuming and so the benefits should be weighed against the cost. For the quickest and simplest migration, use wrappers. Prefer a more holistic solution only when it seems likely that it will have a tangible benefit, such as improved performance, accessibility, or maintainability.
