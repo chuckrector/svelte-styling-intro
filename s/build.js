@@ -75,6 +75,11 @@ async function build() {
         fs.promises.copyFile('code/index.html', 'public/index.html'),
         fs.promises.copyFile('code/globalCSS.css', 'public/globalCSS.css'),
         fs.promises.copyFile('code/HCo_fonts.css', 'public/HCo_fonts.css'),
+        fs.promises.copyFile('code/imvu-logo.svg', 'public/imvu-logo.svg'),
+        fs.promises.copyFile('code/profile-image-1.webp', 'public/profile-image-1.webp'),
+        fs.promises.copyFile('code/profile-image-2.webp', 'public/profile-image-2.webp'),
+        fs.promises.copyFile('code/profile-image-3.webp', 'public/profile-image-3.webp'),
+        fs.promises.copyFile('code/profile-image-4.webp', 'public/profile-image-4.webp'),
     ]);
 };
 

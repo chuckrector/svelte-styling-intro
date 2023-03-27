@@ -37,6 +37,10 @@ let server = http.createServer(async (request, response) => {
         contentType = 'text/javascript';
     } else if (filename.endsWith('.css')) {
         contentType = 'text/css';
+    } else if (filename.endsWith('.svg')) {
+        contentType = 'image/svg+xml';
+    } else if (filename.endsWith('.webp')) {
+        contentType = 'image/webp';
     }
 
     let statusCode = 200;
