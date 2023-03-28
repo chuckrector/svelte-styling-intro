@@ -10,7 +10,7 @@ Each example is tagged. Use `git checkout v1`, `v2`, `v3`, or `v4` to switch bet
 * The `build/` directory contains all of the build output.
 * The `public/` directory is where files are served from, similar to `localhost.imvu.com`. Some files are copied into here from both the `code/` and `build/` directories.
 * `s/build` will build the project, part of which includes "deploying" into `public/`.
-* `s/dev` will build the project and start a dev server at http://localhost:8000 that will auto-rebuild and refresh the page as you save changes to files. It implements primitive "hot modules reloading".
+* `s/dev` will build the project and start a dev server at http://localhost:8000 that will auto-rebuild and refresh the page as you save changes to files. It implements primitive "hot module reloading".
 
 # Svelte styling intro
 
