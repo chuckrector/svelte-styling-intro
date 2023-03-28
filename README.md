@@ -35,7 +35,7 @@ To follow along, run:
 git checkout v1
 ```
 
-`App.svelte` contains a small mockup of the IMVU website with all of the markup and styles combined, except for `globalCSS.css` which contains similar boilerplate styling. Pretend that the content of `App.svelte` is the result of building our existing website. It represents the bundled markup and styling for the global nav, conversation list, message list, message list item, chat bubble, and profile icon components.
+`App.svelte` contains a small mockup of the IMVU website with all of the markup and styles combined, except for `globalCSS.css` which contains globally relevant boilerplate styling in a fashion similar to our production application. Pretend that the content of `App.svelte` is the result of building our existing website. It represents the bundled markup and styling for the global nav, conversation list, message list, message list item, chat bubble, and profile icon components.
 
 Profile icons appear in three places:
 
@@ -96,6 +96,8 @@ The reason why is because Svelte components can contain arbitrary HTML with mult
 Any attributes you specify on a Svelte component are considered props. If you pass in a prop that a Svelte component does not `export`, it will be ignored. Further, since `class` is a keyword in JavaScript, you cannot `export` a prop of that name. Start the dev server and try to do so in `ProfileIcon.svelte`.
 
 You may be tempted to pass in a prop named `classes` and then apply those classes to one or more elements. This does work and those classes will still be scoped by Svelte. But consider that CSS classes are generally used as a styling implementation detail. If you instead treat props as higher-level flags or tags, then they can be leveraged for any purpose. For example, `<ProfileIcon large={true} />` or `<ProfileIcon format="large" />`. A component can make any number of decisions internally about what elements to include or how to style them based on its props.
+
+The point of this example is only to recognize and consider the above concerns.
 
 # Example 4
 
