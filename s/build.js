@@ -80,6 +80,8 @@ async function build() {
         fs.promises.copyFile('code/profile-image-2.webp', 'public/profile-image-2.webp'),
         fs.promises.copyFile('code/profile-image-3.webp', 'public/profile-image-3.webp'),
         fs.promises.copyFile('code/profile-image-4.webp', 'public/profile-image-4.webp'),
+        fs.promises.copyFile('fonts/Metropolis-Regular.woff2', 'public/Metropolis-Regular.woff2'),
+        fs.promises.copyFile('fonts/Metropolis-Medium.woff2', 'public/Metropolis-Medium.woff2'),
     ]);
 };
 

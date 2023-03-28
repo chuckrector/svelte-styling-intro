@@ -41,6 +41,8 @@ let server = http.createServer(async (request, response) => {
         contentType = 'image/svg+xml';
     } else if (filename.endsWith('.webp')) {
         contentType = 'image/webp';
+    } else if (filename.endsWith('.woff2')) {
+        contentType = 'font/woff2';
     }
 
     let statusCode = 200;

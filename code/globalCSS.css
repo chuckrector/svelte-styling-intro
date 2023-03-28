@@ -1,3 +1,21 @@
+@font-face {
+    font-family: "Metropolis";
+    font-style: italic;
+    font-weight: 400;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(Metropolis-Regular.woff2) format("woff2");
+}
+
+@font-face {
+    font-family: "Metropolis";
+    font-style: italic;
+    font-weight: 500;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(Metropolis-Medium.woff2) format("woff2");
+}
+
 :root {
     --color-black:       rgb(0 0 0 / 1.0);
     --color-transparent: rgb(0 0 0 / 0.0);
@@ -23,7 +41,6 @@
                         var(--color-transparent) 0%,
                         var(--color-transparent) 50%,
                         var(--color-white-50) 50%);
-    --default-font: 12px/1.4 "Gotham SSm 4r";
 }
 
 * {
@@ -45,8 +62,11 @@ body,
 }
 
 body {
-    font: var(--default-font);
+    font: 12px/1.4 "Gotham SSm 4r";
     background: #dedede;
+}
+body.use-metropolis {
+    font: 12px/1.4 "Metropolis";
 }
 
 ul {
@@ -56,10 +76,18 @@ ul {
 .font-medium {
     font-family: "Gotham SSm 5r";
 }
+body.use-metropolis .font-medium {
+    font-family: "Metropolis";
+    font-weight: 500;
+}
 
 textarea,
 textarea::placeholder {
-    font: var(--default-font);
+    font: 12px/1.4 "Gotham SSm 4r";
+}
+body.use-metropolis textarea,
+body.use-metropolis textarea::placeholder {
+    font: 12px/1.4 "Metropolis";
 }
 
 .loading-facade {

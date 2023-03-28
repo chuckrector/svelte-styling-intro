@@ -1,12 +1,20 @@
 <script>
     // NOTE(chuck): Example 4: The way Svelte styles things (repaired holistically)
     import ProfileIcon from './ProfileIcon.svelte';
+
+    let useMetropolis = false;
+    function toggleFont() {
+        useMetropolis = !useMetropolis;
+        document.body.classList.toggle('use-metropolis', useMetropolis);
+    }
 </script>
+
+<svelte:body on:click={toggleFont} />
 
 <nav>
     <ul>
         <li class="logo"><img src="imvu-logo.svg" alt="IMVU logo"></li>
-        <li class="menu">MENU</li>
+        <li class="menu">{useMetropolis ? 'Metropolis' : 'Gotham'}</li>
         <li class="account">
             <ProfileIcon imageUrl="profile-image-1.webp" />
         </li>
