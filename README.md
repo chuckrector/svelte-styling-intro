@@ -14,7 +14,7 @@ Each example is tagged. Use `git checkout v1`, `v2`, `v3`, or `v4` to switch bet
 
 # Svelte styling intro
 
-IMVU attempts to isolate component styling informally by namespacing. For example, `ProfileIcon.scss` will put all of its styles under a `.profile-icon` rule. In practice, any style in any component may override another because CSS combines all styles globally by design. This total freedom complicates the implementation and maintenance of the application when the styles for any given component of interest are scattered across many files, and especially when they exist in unexpected locations.
+IMVU attempts to isolate component styling informally by namespacing. For example, `ProfileIcon.scss` will put all of its styles under a `.profile-icon` rule. In practice, any style in any component may override another because CSS combines all styles globally by design. This total freedom complicates maintenance when the styles for any given component are scattered across many files, and especially when they exist in unexpected locations.
 
 Svelte makes each component the boss of its own styles. Nobody else can style a component without its permission: A message list component cannot override the styles of its message list item components or vice versa. The message drawer component cannot override the styles of either. As a result, styles within a component could be considered more stable because it is more difficult for them to be accidentally disrupted by outside influences.
 
@@ -107,6 +107,6 @@ Run:
 git checkout v4
 ```
 
-In this example, the profile icon styles have all been repaired in a more holistic fashion. Meaning, instead of putting everything inside a wrapper, the structure and semaantics of the document are changed in addition to changing the styles.
+In this example, the profile icon styles have all been repaired in a more holistic fashion. Meaning, instead of putting everything inside a wrapper, the structure and semantics of the document are changed in addition to changing the styles.
 
 The changes in this example are not intended to point out the "correct" way to repair the styles. They aim only show an alternative to wrappers. Modifications such as these may be much more time-consuming and so the benefits should be weighed against the cost. For the quickest and simplest migration, use wrappers. Prefer a more holistic solution only when it seems likely that it will have a tangible benefit, such as improved performance, accessibility, or maintainability.
